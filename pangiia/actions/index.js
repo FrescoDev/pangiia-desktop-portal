@@ -18,7 +18,7 @@ export function handleError() {
     }
 }
 
-export async function getEvents(loadingSateDispatcher) {
+export async function getEvents() {
     const data = await fetch('http://localhost:4567/event-feed').then(res => res.json())
     return {
         type: EVENT_RETRIEVAL_SUCCESS,
