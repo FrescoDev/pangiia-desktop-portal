@@ -8,18 +8,21 @@ const eventCollection = (state = {}, action) => {
         case RETRIEVE_EVENTS_REQUEST:
             return {
                 isLoading: true,
+                failedToLoad: false,
                 events: []
             };
 
         case EVENT_RETRIEVAL_SUCCESS:
             return {
                 isLoading: false,
+                failedToLoad: false,
                 events: action.events.data.events
             };
 
         case EVENT_RETRIEVAL_FAILED:
             return {
                 isLoading: false,
+                failedToLoad: true,
                 events: []
             };
 

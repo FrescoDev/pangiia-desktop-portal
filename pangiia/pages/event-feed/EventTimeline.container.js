@@ -8,13 +8,22 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 class EventTimeline extends React.Component {
-    async componentDidMount() {
-        const { setLoadingState, getEvents, handleError } = this.props.actions;
+    constructor(props) {
+        super(props);
+        this.TryEventRetrieval = this.TryEventRetrieval.bind(this);
+    }
 
+    async componentDidMount() {
+        await this.TryEventRetrieval()
+    }
+
+    async TryEventRetrieval() {
+        const { setLoadingState, getEvents, handleError } = this.props.actions;
         try {
             setLoadingState()
             await getEvents()
         } catch (e) {
+            console.error(e)
             handleError()
         }
     }
@@ -33,11 +42,12 @@ class EventTimeline extends React.Component {
                                 <TitlePanel />
                                 <div className="panel-body">
                                     <ul className="media-list">
+                                        {(eventCollection.failedToLoad) ? 'Sorry something went wrong :(' : null}
                                         {(eventCollection.isLoading) ? 'Loading' : events.map((event, index) => <EventWidget event={event} key={index} />)}
                                     </ul>
                                 </div>
                             </div>
-                            <RefreshButton />
+                            <RefreshButton clickAction={() => this.TryEventRetrieval()} />
                         </div>
                     </div>
                 </div>

@@ -6,7 +6,8 @@ import App from './App'
 
 const initialState = {
     eventCollection: {
-        isLoading: false
+        isLoading: false,
+        failedToLoad: false
     }
 };
 

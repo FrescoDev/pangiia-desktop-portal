@@ -1,5 +1,5 @@
 import React from 'react';
 
-const RefreshButton = () => <a href="#" className="btn btn-default btn-block">Refresh</a>;
+const RefreshButton = ({ clickAction }) => <a href="#" onClick={clickAction} className="btn btn-default btn-block">Refresh</a>;
 
 export default RefreshButton;
