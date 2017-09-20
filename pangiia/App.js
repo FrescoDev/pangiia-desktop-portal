@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { Route as Page, Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
 import DevTools from './utils/DevTools';
-import EventTimelime from './pages/event-feed/EventTimeline.container';
+import EventFeedPage from './pages/event-feed';
 
 const App = ({ store, history }) => {
     return (
@@ -14,7 +14,7 @@ const App = ({ store, history }) => {
                 <ConnectedRouter history={history}>
                     <Page path="/">
                         <Switch>
-                            <Page exact path="/" component={EventTimelime} />
+                            <Page exact path="/" component={EventFeedPage} />
                         </Switch>
                     </Page>
                 </ConnectedRouter>

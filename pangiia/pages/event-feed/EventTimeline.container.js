@@ -14,42 +14,38 @@ class EventTimeline extends React.Component {
     }
 
     async componentDidMount() {
-        await this.TryEventRetrieval()
+        await this.TryEventRetrieval();
     }
 
     async TryEventRetrieval() {
         const { setLoadingState, getEvents, handleError } = this.props.actions;
         try {
-            setLoadingState()
-            await getEvents()
+            setLoadingState();
+            await getEvents();
         } catch (e) {
-            console.error(e)
-            handleError()
+            console.error(e);
+            handleError();
         }
     }
 
     render() {
 
-        const { eventCollection } = this.props.state
-        const events = eventCollection.events || []
+        const { eventCollection } = this.props.state;
+        const events = eventCollection.events || [];
 
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-                        <div className={styling}>
-                            <div className="panel">
-                                <TitlePanel />
-                                <div className="panel-body">
-                                    <ul className="media-list">
-                                        {(eventCollection.failedToLoad) ? 'Sorry something went wrong :(' : null}
-                                        {(eventCollection.isLoading) ? 'Loading' : events.map((event, index) => <EventWidget event={event} key={index} />)}
-                                    </ul>
-                                </div>
-                            </div>
-                            <RefreshButton clickAction={() => this.TryEventRetrieval()} />
+            <div className="col-md-5 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+                <div className={styling}>
+                    <div className="panel">
+                        <TitlePanel />
+                        <div>
+                            <ul className="media-list">
+                                {(eventCollection.failedToLoad) ? 'Sorry something went wrong :(' : null}
+                                {(eventCollection.isLoading) ? 'Loading' : events.map((event, index) => <EventWidget event={event} key={index} />)}
+                            </ul>
                         </div>
                     </div>
+                    <RefreshButton clickAction={() => this.TryEventRetrieval()} />
                 </div>
             </div>
         );
@@ -62,7 +58,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     actions: bindActionCreators(Actions, dispatch)
-})
+});
 
 export default connect(
     mapStateToProps,

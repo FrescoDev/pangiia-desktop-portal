@@ -22,13 +22,10 @@ render(
 
 if (module.hot) {
     module.hot.accept('./App', () => {
-        const newConfigureStore = require('./store/configureStore');
-        const newStore = newConfigureStore.configureStore(initialState);
-        const newHistory = newConfigureStore.history;
         const NewApp = App;
         render(
             <AppContainer>
-                <NewApp store={newStore} history={newHistory} />
+                <NewApp store={store} history={history} />
             </AppContainer>,
             document.getElementById('root')
         );

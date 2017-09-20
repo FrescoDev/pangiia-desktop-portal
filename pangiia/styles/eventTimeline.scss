@@ -1,19 +1,7 @@
 
-/* Using panels to display blog date */
-.panel.date {
+.event-widget-date-block {
+    width: 124px;
     margin: 0px;
-    width: 60px;
+    width: 80px;
     text-align: center;
-}
-
-.panel.date .month {
-    padding: 2px 0px;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-.panel.date .day {
-    padding: 3px 0px;
-    font-weight: 700;
-    font-size: 1.5em;
 }
