@@ -7,10 +7,33 @@
     <title>React Redux React-Router with Webpack Boilerplate</title>
     <meta name="description" content="React Redux React-Router with Webpack Boilerplate">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="/main-04b62c98a6321a6514c5.min.css" rel="stylesheet"></head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js" crossorigin="anonymous"></script>
+<link href="/main-e3e521ba6275529fa2dc.min.css" rel="stylesheet"></head>
 
 <body class="view-login">
     <div id="root"></div>
-<script type="text/javascript" src="/main-04b62c98a6321a6514c5.min.js"></script></body>
+<script type="text/javascript" src="/main-e3e521ba6275529fa2dc.min.js"></script></body>
+<script>
+    var root = document.createElement('div');
+    document.body.appendChild(root);
+
+    var scrollAnimation = {
+        scrollTop: 0
+    };
+    var scrollTop = document.body.clientHeight / 2 - window.innerHeight / 2;
+
+    var tween = TweenLite.to(scrollAnimation, 2, {
+        scrollTop: scrollTop,
+        ease: Power2.easeInOut,
+        onUpdate: () => {
+            window.scrollTo(0, scrollAnimation.scrollTop);
+        }
+    });
+
+    window.addEventListener('mousewheel', function mouseHandler() {
+        tween.kill();
+        window.removeEventListener('mousewheel', mouseHandler, false);
+    }, false);
+</script>
 
 </html>
