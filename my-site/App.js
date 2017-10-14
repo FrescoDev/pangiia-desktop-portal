@@ -1,12 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-import { Route as Page, Switch } from 'react-router-dom';
-import { ConnectedRouter } from 'react-router-redux';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import { Parallax } from 'react-scroll-parallax';
-require('./styles/main.scss');
 import aws from './images/aws.png'
 import docker from './images/docker.png'
 import micoservices from './images/micro-services.png'
@@ -16,12 +11,13 @@ import nodejs from './images/nodejs-icon.png'
 import reactjs from './images/reactjs.png'
 import rest from './images/rest.png'
 import { SocialIcon } from 'react-social-icons';
+require('./styles/main.scss');
 
 const getRandomInt = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-const P1 = {
+const awsIcon = {
     bounds: [234, 321],
     forms: [
         <div>
@@ -30,47 +26,49 @@ const P1 = {
     ],
 };
 
-const A2 = {
+const dockerIcon = {
     bounds: [167, 281],
     forms: [
         <div><img src={docker}/></div>,
     ],
 };
 
-const R3 = {
+const micoservicesIcon = {
     bounds: [165, 281],
     forms: [
         <div><img src={micoservices}/></div>,
     ]
 };
 
-const A4 = {
+const mongodbIcon = {
     bounds: [167, 281],
     forms: [
         <div><img src={mongodb}/></div>,
     ]
 };
 
-const L5 = {
+const nodejsIcon = {
     bounds: [130, 251],
     forms: [
         <div><img src={nodejs}/></div>,
     ],
 };
 
-const A7 = {
+const reactIcon = {
     bounds: [117, 221],
     forms: [
         <div><img src={reactjs}/></div>,
     ],
 };
 
-const X8 = {
+const restIcon = {
     bounds: [117, 221],
     forms: [
         <div><img src={rest}/></div>,
     ],
 };
+
+const iconSet = [awsIcon, dockerIcon, micoservicesIcon, mongodbIcon, nodejsIcon, reactIcon, restIcon];
 
 const Gradients = () => (
     <svg width="50" height="50" version="1.1" className="hidden">
@@ -103,19 +101,17 @@ const Gradients = () => (
     </svg>
 );
 
-const word = [P1, A2, R3, X8, A4, L5, A7];
-
-class Letter extends React.Component {
+class Icon extends React.Component {
     render() {
-        const { letter } = this.props;
+        const { icon } = this.props;
         const offset = getRandomInt(50, 150);
         const isSlower = getRandomInt(0, 1) ? true : false;
         return (
-            <div className="letter" style={{
-                width: letter.bounds[0] / 10 + 'rem',
-                height: letter.bounds[1] / 10 + 'rem',
+            <div className="icon" style={{
+                width: icon.bounds[0] / 10 + 'rem',
+                height: icon.bounds[1] / 10 + 'rem',
             }}>
-                {letter.forms.map((X, i) => 
+                {icon.forms.map((X, i) => 
                     <Parallax
                         className="form"
                         key={i}                        
@@ -170,16 +166,16 @@ const Medium = () => (
 );
 
 
-const ParallaxWord = () => (
-    <div className="word">
-        {word.map((X, i) => 
-            <Letter key={i} letter={X} />
+const ParallaxIconSet = () => (
+    <div className="icon-set">
+        {iconSet.map((X, i) => 
+            <Icon key={i} icon={X} />
         )}
     </div>
 );
 
-const Fullscreen = () => (
-    <div className="fullscreen">
+const Title = () => (
+    <div className="title">
         <h1 className="navtext">Software Engineer</h1>
     </div>
 );
@@ -189,21 +185,15 @@ const App = () => (
         <main>
             <Scroll />
             <Gradients />
-            <ParallaxWord />
+            <ParallaxIconSet />
             <Github />
             <Twitter />
             <Linkedin />
             <Medium />
             <Resume />
-            <Fullscreen />
+            <Title />
         </main>
     </ParallaxProvider>
 );
-
-
-App.propTypes = {
-    store: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
-};
 
 export default App

@@ -44,14 +44,14 @@ body {
     }
 }
 
-.word {
+.icon-set {
     padding-bottom: 6%;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
 }
 
-.letter {
+.icon {
     left : -47px;
     position: relative;
     margin: 0 1.8rem;
@@ -131,7 +131,7 @@ body {
     }
 }
 
-.fullscreen {
+.title {
     position: fixed;
     height: 32px;
     top: 20px;
