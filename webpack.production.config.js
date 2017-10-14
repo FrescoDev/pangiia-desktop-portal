@@ -11,7 +11,7 @@ module.exports = {
     entry: [
         // Polyfills go here too, like babel-polyfill or whatwg-fetch
         'babel-polyfill',
-        path.join(__dirname, 'pangiia/index.js')
+        path.join(__dirname, 'my-site/index.js')
     ],
     // Where you want the output to go
     output: {
@@ -29,7 +29,7 @@ module.exports = {
         // change name because the hash part changes. We want hash name changes to bust cache
         // on client browsers.
         new HtmlWebpackPlugin({
-            template: 'pangiia/index.tpl.html',
+            template: 'my-site/index.tpl.html',
             inject: 'body',
             filename: 'index.html'
         }),

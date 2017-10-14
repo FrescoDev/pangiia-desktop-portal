@@ -11,7 +11,7 @@ module.exports = {
         'webpack-dev-server/client?http://localhost:3000',
         'webpack/hot/only-dev-server',
         'react-hot-loader/patch',
-        path.join(__dirname, 'pangiia/index.js')
+        path.join(__dirname, 'my-site/index.js')
     ],
     output: {
         path: path.join(__dirname, '/dist/'),
@@ -23,7 +23,7 @@ module.exports = {
             allChunks: true
         }),
         new HtmlWebpackPlugin({
-            template: 'pangiia/index.tpl.html',
+            template: 'my-site/index.tpl.html',
             inject: 'body',
             filename: 'index.html'
         }),

@@ -4,11 +4,9 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { Route as Page, Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
-import DevTools from './utils/DevTools';
-import EventFeedPage from './pages/event-feed';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import { Parallax } from 'react-scroll-parallax';
-require('./styles/eventTimeline.scss');
+require('./styles/main.scss');
 import aws from './images/aws.png'
 import docker from './images/docker.png'
 import micoservices from './images/micro-services.png'
@@ -18,17 +16,6 @@ import nodejs from './images/nodejs-icon.png'
 import reactjs from './images/reactjs.png'
 import rest from './images/rest.png'
 import { SocialIcon } from 'react-social-icons';
-
-/**
- * -------------------------------------------------------
- * Parallax
- * -------------------------------------------------------
- * 
- * Experimenting with some scroll based parallax effects 
- * using React. See react-scroll-parallax:
- * https://github.com/jscottsmith/react-scroll-parallax
- *
- */
 
 const getRandomInt = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -70,13 +57,6 @@ const L5 = {
         <div><img src={nodejs}/></div>,
     ],
 };
-
-// const L6 = {
-//     bounds: [110, 281],
-//     forms: [
-//         <img src={nodejs}/>,
-//     ],
-// };
 
 const A7 = {
     bounds: [117, 221],
