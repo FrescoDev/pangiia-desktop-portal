@@ -166,7 +166,6 @@ const Medium = () => (
     }} url="https://medium.com/@codejo" />
 );
 
-
 const ParallaxIconSet = () => (
     <div className="icon-set">
         {iconSet.map((X, i) => 
