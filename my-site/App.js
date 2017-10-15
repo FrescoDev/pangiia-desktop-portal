@@ -12,6 +12,7 @@ import reactjs from './images/reactjs.png'
 import rest from './images/rest.png'
 import { SocialIcon } from 'react-social-icons';
 require('./styles/main.scss');
+import MediaQuery from 'react-responsive';
 
 const getRandomInt = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -167,7 +168,7 @@ const Medium = () => (
 );
 
 const ParallaxIconSet = () => (
-    <div className="icon-set">
+    <div className="icon-set"  media="(min-width: 800px)" >
         {iconSet.map((X, i) => 
             <Icon key={i} icon={X} />
         )}
@@ -183,15 +184,27 @@ const Title = () => (
 const App = () => (
     <ParallaxProvider>
         <main>
-            <Scroll />
-            <Gradients />
-            <ParallaxIconSet />
-            <Github />
-            <Twitter />
-            <Linkedin />
-            <Medium />
-            <Resume />
-            <Title />
+            <MediaQuery query="(min-device-width: 1000px)">
+                <Scroll />
+                <Gradients />
+                <ParallaxIconSet />
+                <Github />
+                <Twitter />
+                <Linkedin />
+                <Medium />
+                <Resume />
+                <Title />
+            </MediaQuery>
+            <MediaQuery 
+            query="(max-width: 800px)" 
+            style={{ 'paddingRight': '7%','width': '109%' }}>
+                <Resume />
+                <Github />
+                <Twitter />
+                <Linkedin />
+                <Medium />
+                <Title />
+            </MediaQuery>
         </main>
     </ParallaxProvider>
 );
